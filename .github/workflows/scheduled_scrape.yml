@@ -31,4 +31,4 @@ jobs:
 
 
       - name: Run Python script
-        run: python your_script.py
+        run: python web_scraper.py
