@@ -23,6 +23,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
+      - name: Check Chrome version
+        run: google-chrome --version
+
+      - name: Check ChromeDriver version
+        run: chromedriver --version
+
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
