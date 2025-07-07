@@ -23,17 +23,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Chrome v114
+      - name: Install Chrome v117
         run: |
-          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.198-1_amd64.deb
-          sudo apt install -y ./google-chrome-stable_114.0.5735.198-1_amd64.deb
+          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_117.0.5938.92-1_amd64.deb
+          sudo apt install -y ./google-chrome-stable_117.0.5938.92-1_amd64.deb
 
-      - name: Install ChromeDriver v114
+      - name: Install ChromeDriver v117
         run: |
-          wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+          wget https://chromedriver.storage.googleapis.com/117.0.5938.92/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
+
 
       - name: Verify Chrome & ChromeDriver
         run: |
