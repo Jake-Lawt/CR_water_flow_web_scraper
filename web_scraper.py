@@ -8,7 +8,8 @@ import time
 
 options = Options()
 options.headless = True
-
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 user_data_dir = tempfile.mkdtemp()
 options.add_argument(f'--user-data-dir={user_data_dir}')
 
