@@ -2,11 +2,15 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from datetime import datetime
+import tempfile
 import csv
 import time
 
 options = Options()
 options.headless = True
+
+user_data_dir = tempfile.mkdtemp()
+options.add_argument(f'--user-data-dir={user_data_dir}')
 
 driver = webdriver.Chrome(options=options)
 
