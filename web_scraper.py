@@ -22,11 +22,13 @@ driver.quit()
 
 # Parse HTML
 soup = BeautifulSoup(html_content, 'html.parser')
-data_to_save = [
-    [col.text.strip() for col in row.find_all(['td', 'th'])]
-    for table in soup.find_all('table')
-    for row in table.find_all('tr')
-]
+tables = soup.find_all('table')
+for table in tables:
+    rows = table.find_all('tr')
+    data_to_save = []
+    for row in rows:
+        cols = row.find_all(['td', 'th'])
+        data_to_save.append([col.text.strip() for col in cols])
 
 # Ensure data_directory exists
 os.makedirs('data_directory', exist_ok=True)
@@ -36,8 +38,10 @@ timestamp = datetime.now().strftime("%Y_%m_%d_%H")
 filename = f"data_directory/water_supply_{timestamp}.csv"
 
 # Save snapshot
-with open(filename, 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
+current_dt = datetime.now()
+formatted_datetime = current_dt.strftime("%Y_%m_%d_%H")
+with open(f'water_supply_{formatted_datetime}.csv', 'w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
     writer.writerows(data_to_save)
 
 print(f"Data saved to {filename}")
