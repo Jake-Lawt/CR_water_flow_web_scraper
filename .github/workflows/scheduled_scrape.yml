@@ -18,6 +18,9 @@ jobs:
         with:
           chrome-version: 'latest'
           install-chromedriver: true
+      - name: Remove old ChromeDriver
+        run: |
+          sudo rm -f /opt/hostedtoolcache/setup-chrome/chromedriver/**/chromedriver
 
       - name: Set up Python
         uses: actions/setup-python@v5
