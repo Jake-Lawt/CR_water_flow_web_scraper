@@ -8,10 +8,10 @@ import time
 
 options = Options()
 options.headless = True
-options.binary_location = "/usr/bin/chromium-browser"
+options.binary_location = "/usr/bin/google-chrome"
 
 driver = webdriver.Chrome(
-    service=Service("/usr/lib/chromium-browser/chromedriver"),
+    service=Service("./"),
     options=options
 )
 
