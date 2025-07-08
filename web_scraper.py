@@ -23,9 +23,9 @@ driver.quit()
 # Parse HTML
 soup = BeautifulSoup(html_content, 'html.parser')
 tables = soup.find_all('table')
+data_to_save = []
 for table in tables:
     rows = table.find_all('tr')
-    data_to_save = []
     for row in rows:
         cols = row.find_all(['td', 'th'])
         data_to_save.append([col.text.strip() for col in cols])
