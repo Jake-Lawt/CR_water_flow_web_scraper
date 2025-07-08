@@ -6,7 +6,8 @@ import csv
 import time
 
 options = Options()
-options.headless = True
+for arg in ["--headless", "--no-sandbox", "--disable-dev-shm-usage"]:
+    options.add_argument(arg)
 options.binary_location = "/usr/bin/google-chrome"
 
 driver = webdriver.Chrome(options=options)
