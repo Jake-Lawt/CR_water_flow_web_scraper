@@ -5,6 +5,9 @@ on:
     - cron: '0 16,22 * * *'  # Runs every day at 16:00 and 22:00 UTC
   workflow_dispatch:
 
+env:
+  DATETIME: ${{ github.run_started_at && github.run_started_at.substring(0,13).replace('T', '-') }}
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
@@ -17,7 +20,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: '138'
-          
+
       - name: Remove old ChromeDriver
         run: |
           sudo rm -f /opt/hostedtoolcache/setup-chrome/chromedriver/**/chromedriver
@@ -34,3 +37,8 @@ jobs:
 
       - name: Run web scraper
         run: python web_scraper.py
+      - name: Upload CSV artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: water_supply_csv${{ env.DATETIME }}
+          path: water_supply_*.csv
