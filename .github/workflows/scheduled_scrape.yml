@@ -37,9 +37,11 @@ jobs:
 
       - name: Run web scraper
         run: python web_scraper.py
-        
-      - name: Upload CSV artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: water_supply_csv${{ env.DATE}}
-          path: water_supply_*.csv
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add data_directory/*.csv
+          git commit -m "Add snapshot CSV for water supply scrape"
+          git push
