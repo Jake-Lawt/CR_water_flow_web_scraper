@@ -1,2 +1,2 @@
-selenium==4.34.1
-beautifulsoup4==4.13.4
+selenium>=4.26.0,<4.35.0
+beautifulsoup4==4.12

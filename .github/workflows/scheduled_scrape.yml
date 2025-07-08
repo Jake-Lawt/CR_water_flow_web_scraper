@@ -16,13 +16,13 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: '126'
+          chrome-version: 'latest'
           install-chromedriver: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13.2'
+          python-version: '3.12'
 
       - name: Install Python dependencies
         run: |
