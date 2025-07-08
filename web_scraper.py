@@ -40,7 +40,7 @@ filename = f"data_directory/water_supply_{timestamp}.csv"
 # Save snapshot
 current_dt = datetime.now()
 formatted_datetime = current_dt.strftime("%Y_%m_%d_%H")
-with open(f'water_supply_{formatted_datetime}.csv', 'w', newline='', encoding='utf-8') as file:
+with open(filename, 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerows(data_to_save)
 
