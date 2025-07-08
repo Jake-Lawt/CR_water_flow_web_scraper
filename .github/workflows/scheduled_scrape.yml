@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  DATETIME: ${{ github.run_started_at && github.run_started_at.substring(0,13).replace('T', '-') }}
+  DATE: ${{ format('yyyy-MM-dd', github.run_started_at) }}
 
 jobs:
   run-script:
@@ -40,5 +40,5 @@ jobs:
       - name: Upload CSV artifact
         uses: actions/upload-artifact@v3
         with:
-          name: water_supply_csv${{ env.DATETIME }}
+          name: water_supply_csv${{ env.DATE}}
           path: water_supply_*.csv
