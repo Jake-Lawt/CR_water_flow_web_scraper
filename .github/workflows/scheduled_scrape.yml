@@ -8,6 +8,9 @@ on:
 env:
   DATE: ${{ format('yyyy-MM-dd', github.run_started_at) }}
 
+permissions:
+  contents: write
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
